@@ -30,3 +30,9 @@ Programme des colles du 9 au 13 octobre           |  Exercices à chercher
 Programme des colles du 16 au 20 octobre           |  Exercices à chercher
 :-------------------------:|:-------------------------:
 [![Programme 5](pdf-icon.png)](prog_khole_2017_5.pdf) |  [![feuille 5](exercices.png)](Liste_exos_sup_5_2017.pdf)
+
+# Programme 6
+
+Programme des colles du 6 au 10 novembre           |  Exercices à chercher
+:-------------------------:|:-------------------------:
+[![Programme 6](pdf-icon.png)](prog_khole_2017_6.pdf) |  [![feuille 6](exercices.png)](Liste_exos_sup_6_2017.pdf)
