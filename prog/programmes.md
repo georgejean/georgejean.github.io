@@ -42,3 +42,9 @@ Programme des colles du 6 au 10 novembre           |  Exercices à chercher
 Programme des colles du 13 au 17 novembre           |  Exercices à chercher
 :-------------------------:|:-------------------------:
 [![Programme 7](pdf-icon.png)](prog_khole_2017_7.pdf) |  [![feuille 7](exercices.png)](Liste_exos_sup_7_2017.pdf)
+
+# Programme 8
+
+Programme des colles du 20 au 24 novembre           |  Exercices à chercher
+:-------------------------:|:-------------------------:
+[![Programme 8](pdf-icon.png)](prog_khole_2017_8.pdf) |  [![feuille 8](exercices.png)](Liste_exos_sup_8_2017.pdf)
