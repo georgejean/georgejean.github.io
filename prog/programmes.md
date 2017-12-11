@@ -1,5 +1,11 @@
 ---
 ---
+# Programme 12
+
+Programme des colles du 18 au 22 décembre           |  Exercices à chercher
+:-------------------------:|:-------------------------:
+[![Programme 12](pdf-icon.png)](prog_khole_2017_12.pdf) |  [![feuille 12](exercices.png)](Liste_exos_sup_12_2017.pdf)
+
 # Programme 11
 
 Programme des colles du 11 au 15 décembre           |  Exercices à chercher
