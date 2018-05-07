@@ -4,6 +4,12 @@
 Les divers documents PDF de cette page sont distribués suivant la licence indiquée ci-dessous:
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
 
+# Programme 25
+
+Programme des colles du 14 au 18 mai           |  Exercices à chercher
+:-------------------------:|:-------------------------:
+[![Programme 25](pdf-icon.png)](prog_khole_2017_25.pdf) |  [![feuille 25](exercices.png)](Liste_exos_sup_25_2017.pdf)
+
 # Programme 24
 
 Programme des colles du 9 au 13 avril           |  Exercices à chercher
