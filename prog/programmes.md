@@ -4,6 +4,12 @@
 Les divers documents PDF de cette page sont distribués suivant la licence indiquée ci-dessous:
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
 
+# Programme 27
+
+Programme des colles du 11 au 15 juin           |  Exercices à chercher
+:-------------------------:|:-------------------------:
+[![Programme 27](pdf-icon.png)](prog_khole_2017_27.pdf) |  [![feuille 27](exercices.png)](Liste_exos_sup_27_2017.pdf)
+
 # Programme 26
 
 Programme des colles du 21 au 25 mai           |  Exercices à chercher
