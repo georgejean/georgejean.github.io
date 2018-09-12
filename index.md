@@ -1,10 +1,9 @@
 ---
+lang: fr
 ---
 
-# Installer Pyzo, Miniconda et des bibliothèques
+# [Installer Pyzo, Miniconda et des bibliothèques](tuto-pyzo.md) 
 
- - [Installer Pyzo](tuto/tuto_pyzo1.html)
- - [Installer Miniconda](tuto/tuto_pyzo2.html) 
- - [Installer quelques bibliothèques](tuto/tuto_pyzo3.html) 
+# [Les colles](prog/programmes.md)
 
-# [Les programmes de colles](prog/programmes.md)
+# [Archives](archives/menu.md)
