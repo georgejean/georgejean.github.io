@@ -2,3 +2,6 @@ github: [metadata]
 theme: jekyll-theme-slate
 title: Site des mathématiques de la BCPST1 de Nîmes
 description: Documents de mathématiques et d'informatique utiles pour les étudiants de BCPST
+github:
+  repository_url: https://github.com/georgejean
+lang: fr

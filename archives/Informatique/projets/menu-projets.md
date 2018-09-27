@@ -1,5 +1,4 @@
 ---
-lang: fr
 ---
 
 # [Clôture d'un domaine forestier](Projet_Env_Convexe.pdf) 

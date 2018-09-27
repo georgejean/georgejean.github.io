@@ -1,5 +1,4 @@
 ---
-lang: fr
 ---
 
 - [Installer Pyzo](tuto/tuto_pyzo1.html)

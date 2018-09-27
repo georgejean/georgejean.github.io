@@ -1,5 +1,4 @@
 ---
-lang: fr
 ---
 
 # [Installer Pyzo, Miniconda et des bibliothèques](tuto-pyzo.md) 

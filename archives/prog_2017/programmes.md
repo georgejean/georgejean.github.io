@@ -1,5 +1,4 @@
 ---
-lang: fr
 ---
 
 <!-- Les divers documents PDF de cette page sont distribués suivant la licence indiquée ci-dessous:
