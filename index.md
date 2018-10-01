@@ -1,8 +1,10 @@
 ---
 ---
 
-# [Installer Pyzo, Miniconda et des bibliothèques](tuto-pyzo.md) 
+# Exercices de mathématiques et documents d'informatique conformes au programme de BCPST.
 
-# [Les colles](prog/programmes.md)
+## [Installer Pyzo, Miniconda et des bibliothèques](tuto-pyzo.md) 
 
-# [Archives](archives/menu.md)
+## [Les colles](prog/programmes.md)
+
+## [Archives](archives/menu.md)
