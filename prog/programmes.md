@@ -1,6 +1,12 @@
 ---
 ---
 
+# Programme 3
+
+Programme des colles du 8 au 12 octobre           |  Exercices à chercher
+:-------------------------:|:-------------------------:
+[![Programme 3](../images/pdf-icon.png)](prog_khole_2018_3.pdf) |  [![feuille 3](../images/exercices.png)](Liste_exos_sup_3_2018.pdf)
+
 # Programme 2
 
 Programme des colles du 1 au 5 octobre           |  Exercices à chercher
