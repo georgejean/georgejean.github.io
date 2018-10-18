@@ -1,6 +1,12 @@
 ---
 ---
 
+# Programme 5
+
+Programme des colles du 5 au 9 novembre           |  Exercices à chercher
+:-------------------------:|:-------------------------:
+[![Programme 5](../images/pdf-icon.png)](prog_khole_2018_5.pdf) |  [![feuille 5](../images/exercices.png)](Liste_exos_sup_5_2018.pdf)
+
 # Programme 4
 
 Programme des colles du 15 au 19 octobre           |  Exercices à chercher
