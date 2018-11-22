@@ -1,6 +1,12 @@
 ---
 ---
 
+# Programme 8
+
+Programme des colles du 26 au 30 novembre           |  Exercices à chercher
+:-------------------------:|:-------------------------:
+[![Programme 8](../images/pdf-icon.png)](prog_khole_2018_8.pdf) |  [![feuille 8](../images/exercices.png)](Liste_exos_sup_8_2018.pdf)
+
 # Programme 7
 
 Programme des colles du 19 au 23 novembre           |  Exercices à chercher
