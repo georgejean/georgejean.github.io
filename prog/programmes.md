@@ -3,7 +3,7 @@
 
 # Programme 10
 
-Programme des colles du 3 au 7 décembre           |  Exercices à chercher
+Programme des colles du 10 au 14 décembre           |  Exercices à chercher
 :-------------------------:|:-------------------------:
 [![Programme 10](../images/pdf-icon.png)](prog_khole_2018_10.pdf) |  [![feuille 10](../images/exercices.png)](Liste_exos_sup_10_2018.pdf)
 
