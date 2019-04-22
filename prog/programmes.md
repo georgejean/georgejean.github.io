@@ -1,6 +1,12 @@
 ---
 ---
 
+# Programme 25
+
+Programme des colles du 6 au 10 mai           |  Exercices à chercher
+:-------------------------:|:-------------------------:
+[![Programme 25](../images/pdf-icon.png)](prog_khole_2018_25.pdf) | [![feuille 23](../images/exercices.png)](Liste_exos_sup_23_2018.pdf)
+
 # Programme 24
 
 Programme des colles du 15 au 19 avril           |  Exercices à chercher
