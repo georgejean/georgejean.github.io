@@ -1,6 +1,12 @@
 ---
 ---
 
+# Programme 28
+
+|               Programme des colles du 24 au 28 juin               |                         Exercices à chercher                         |
+| :---------------------------------------------------------------: | :------------------------------------------------------------------: |
+| [![Programme 28](../images/pdf-icon.png)](prog_khole_2018_28.pdf) | [![feuille 26](../images/exercices.png)](Liste_exos_sup_26_2018.pdf) |
+
 # Programme 27
 
 |               Programme des colles du 17 au 21 juin               |                         Exercices à chercher                         |
