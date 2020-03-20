@@ -13,3 +13,5 @@
 
 # [Le festival d'Avignon](Festival.pdf) 
 
+# [Mini projet: Labyrinthe](Mini_projet_laby.pdf)
+

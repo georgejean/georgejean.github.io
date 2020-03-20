@@ -1,0 +1,1231 @@
+% fichier à modifier
+% à noter: ce dernier package environ est peut-être inutile grâce à \bgroup (accolade ouvrante implicite) et \egroup (accolade fermante implicite)
+% watermark (à enlever au besoin)
+% \AddToShipoutPicture{
+% \put(\LenToUnit{\leftmargin},0){\scalebox{4.5}{\rotatebox{60}{\color[gray]{0.98} \Huge Bcpst1-d'Alzon-2015}}}
+% }
+%\lfoot{\bfseries{\tiny{Nicolas Blanc}}}
+% Definition des cercles
+
+
+\documentclass[a4paper,oneside,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{etex}
+\usepackage{amsfonts}
+\usepackage[a4paper]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage[active]{srcltx}
+\usepackage{stmaryrd}
+\usepackage{fancybox}
+\usepackage{pstricks-add}
+\usepackage{pst-grad}
+\usepackage{xkeyval}
+\usepackage{pst-coil}
+\usepackage{ifthen}
+\usepackage{ifpdf}
+\usepackage{pst-blur}
+\usepackage{tikz,tkz-tab}
+\usepackage[tikz]{bclogo}
+\usepackage{sidecap}
+\usepackage{caption}
+\usepackage{slashbox}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{dsfont}
+\usepackage{pifont}
+\usepackage{mdframed}
+\usepackage{environ}
+\usepackage{varwidth}
+\usepackage{enumerate}
+\usepackage{animate}
+\usepackage{enumitem}
+\usepackage{eso-pic}
+\usepackage{tcolorbox}
+\usepackage{xparse}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[french]{babel}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.50.0.2953}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Created=Tuesday, February 24, 2009 10:38:50}
+%TCIDATA{LastRevised=Saturday, February 24, 2018 22:45:11}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Exams and Syllabi\SW\Class Handout">}
+%TCIDATA{CSTFile=article.cst}
+%TCIDATA{ComputeDefs=
+%$A=%
+%\begin{pmatrix}
+%0 & 0 & 0 & -8 \\ 
+%1 & 0 & 0 & -3 \\ 
+%0 & 1 & 0 & -5 \\ 
+%0 & 0 & 1 & -2%
+%\end{pmatrix}%
+%$
+%}
+
+
+\tcbuselibrary{minted}
+\tcbuselibrary{skins}
+\newtcblisting{myPython}{listing engine=minted, minted language=python3,minted options={fontsize=\small,linenos,numbersep=3mm},
+colback=white,colframe=blue!75!black,listing only,before=\begin{center},after=\end{center},
+left=5mm,enhanced, width=\linewidth,
+overlay={\begin{tcbclipinterior}\fill[red!20!blue!20!white] (frame.south west)
+rectangle ([xshift=5mm]frame.north west);\end{tcbclipinterior}}}
+\newcommand \pictoPreuveDemo {\includegraphics [width =17pt]{../Images/preuve.png}}
+\newcommand \pictoPythonInfo {\includegraphics [width =17pt]{../Images/python.png}}
+\newcommand \pictoBlocNoteRem {\includegraphics [width =17pt]{../Images/blocnoteRemarque.png}}
+\newcommand \pictoBPascal {\includegraphics [width =20pt]{../Images/blaise-pascal.png}}
+\newcommand \pictoINewton {\includegraphics [width =20pt]{../Images/icon-newton.png}}
+\newcommand \pictoTheoreme {\includegraphics [width =20pt]{../Images/theo.png}}
+\newcommand\xdownarrow[1][2ex]{   \mathrel{\rotatebox[origin=c]{90}{$\xleftarrow{\rule{#1}{0pt}}$}}
+}
+\renewcommand \bcStyleTitre[1]{\textbf{#1}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newenvironment{myitemize}{\begin{list}{$\bullet$}{\setlength{\leftmargin}{15pt}}}{\end{list}}
+\newenvironment{myitemizeBis}{\begin{enumerate}[label = \protect\ovalbox{\arabic*}, labelsep = 5mm, leftmargin = 1.5cm]}{\end{enumerate}}
+\newenvironment{myitemizeB}[1][0.9\linewidth]{\smallskip \vrule width 1pt \  \begin{minipage}{#1}\begin{list}{$\bullet$}{\setlength{\leftmargin}{15pt}}}{\end{list}\end{minipage}\smallskip}
+\newenvironment{myitemizeBB}{\begin{enumerate}[label=\protect\ding{\value*}, start=202]}{\end{enumerate}}
+\newenvironment{myitemizeBibis}{\begin{itemize}[label = \ding{245} , itemsep=0pt, labelsep=5mm , leftmargin = 1.5cm]}{\end{itemize}}
+\def\firstcircle{(0,0) circle (1.5cm)}
+\def\secondcircle{(0:2cm) circle (1.5cm)}
+\colorlet{circle edge}{blue!90}
+\colorlet{circle area}{blue!40}
+\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}
+\usetikzlibrary{shadows, decorations.pathmorphing, arrows, patterns, positioning,shapes}
+\setlength{\parindent}{0pt} 
+\tikzset{
+  corpsmeth/.style={
+    draw=black, fill=gray!10, thick, rectangle,
+    rounded corners, inner sep=10pt, inner ysep=20pt,
+    text width=\linewidth-3*10pt-\pgflinewidth
+  },
+  titremeth/.style={
+    draw=black, fill=white, thick, rectangle,
+    inner sep=1em, inner ysep=1ex,
+    text=black, drop shadow
+  }
+}
+\NewDocumentEnvironment{Méthode}{O{}}{\begin{tikzpicture}
+\node[corpsmeth](meth)\bgroup
+\justifying}{\egroup; \node[titremeth] at (meth.north) {\large\bfseries\sffamily Point méthode #1};
+\end{tikzpicture}}
+\setlength{\headheight}{11pt} 
+\geometry{margin={1cm,2cm}}
+\linespread{1.20}
+\pagestyle{fancy}
+\lhead{BCPST-1} \chead {\textbf{ Mini projet: Labyrinthe et chemins}} \rhead{Février 2018}
+\rfoot{\textsc{\tiny{Institut Emmanuel d'Alzon, Nîmes}}} \pagestyle{fancy}
+\cfoot{--\thepage/\pageref{LastPage}--}
+\lfoot{\tiny{\bfseries{Nicolas Blanc}} \hspace{0.1cm} \textbf{\textcopyright}}
+
+
+\begin{document}
+
+
+\fbox{\textbf{Mini projet}}: \textbf{Labyrinthe élémentaire et plus court
+chemin.}
+
+\bigskip
+
+L'objectif de ce mini-projet est de créer un labyrinthe élémentaire (élé%
+mentaire dans le sens où on n'utilisera pas d'algorithme complexe, spécialisé
+dans la création de "beaux" labyrinthes), puis de déterminer (s'il existe)
+un plus court chemin, ainsi que sa longueur, entre deux cases choisies par
+l'utilisateur.
+
+\bigskip
+
+\fbox{\textbf{Exercice 1}}: \textit{Modélisation et représentation du
+labyrinthe}
+
+Un labyrinthe sera pour nous un ensemble rectangulaire formé de cases vides
+(correspondant à des cases où on peut se déplacer) et de murs (cases
+inaccessibles). On représentera les cases vides en blanc et les murs en noir.
+
+Tester la portion de code ci-dessous:
+
+\begin{myPython}
+import matplotlib.pyplot as plt
+import numpy as np
+
+A = np.array([[2,2,2,0],[2,2,0,2],[0,2,2,2]])
+plt.imshow(A,cmap="hot")
+plt.colorbar()  # Ligne facultative
+plt.show()
+\end{myPython}
+
+Essayer alors de trouver des réponses aux questions ci-dessous:
+
+Quel est le rôle de \texttt{plt.imshow} par rapport à la matrice $A?$ Quelle
+couleur représente les coefficients de $A$ de valeur $2?$ de valeur $0?$
+
+Tester maintenant le code ci-dessous (à mettre à la suite du précédent):
+
+\begin{myPython}
+B = np.array([[1,1,2,0],[2,1,0,2],[0,1,1,2]])
+plt.imshow(B,cmap="hot")
+plt.colorbar()  # Ligne facultative
+plt.show()
+\end{myPython}
+
+Quelle couleur représente les coefficients de $A$ de valeur $1?$
+
+\bigskip
+
+Les réponses aux questions ci-dessus nous permettent de comprendre comment
+nous allons représenter le labyrinthe:
+
+%TCIMACRO{\TeXButton{debut liste puces}{\begin{myitemize}}}%
+%BeginExpansion
+\begin{myitemize}%
+%EndExpansion
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+par une représentation matricielle où les $2$ coderont les cases vides, les $%
+0$ les murs, et les $1$ les cases d'un chemin parcouru,
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+par une représentation graphique, immédiatement déduite de la représentation
+matricielle.
+
+%TCIMACRO{\TeXButton{fin liste puces}{\end{myitemize}}}%
+%BeginExpansion
+\end{myitemize}%
+%EndExpansion
+
+\newpage
+
+\fbox{\textbf{Exercice 2}}: \textit{Génération aléatoire d'un labyrinthe
+avec un nombre de murs fixé}
+
+\textit{Principe}: Supposons que notre labyrinthe soit un rectangle de
+taille $(n,m)$ (où $n$ est le nombre de lignes et $m$ le nombre de colonnes)
+et que nous souhaitons $p$ murs où $p\leqslant nm.$
+
+Nous allons répertorier tous les couples d'indices $(i,j)$ des coefficients
+de la matrice $A$ représentant le labyrinthe et choisir successivement, alé%
+atoirement et sans remise, $p$ couples de coefficients (qui correspondront
+aux cases occupées par des murs).
+
+1) Écrire une fonction \texttt{Tirage} prenant en entrée une liste $L$ de $q$
+éléments, un entier naturel $p,$ et donnant en sortie:
+
+un message d'erreur si $p>q,$
+
+sinon, une liste $M$ de $p$ éléments de $L$ choisis successivement, alé%
+atoirement et sans remise de la liste $L$.
+
+\textit{Indication}:
+
+On pourra utiliser l'une des deux méthodes ci-dessous:
+
+\underline{$1^{\grave{e}re}$ méthode}: \textit{avec la méthode pop des listes%
+}
+
+Choisir aléatoirement les indices des éléments de $L$ à extraire (en
+utilisant la fonction \texttt{randint} de la bibliothèque \texttt{random}),
+sachant que l'instruction
+
+\texttt{element = L.pop(ind)} supprime l'élément d'indice \texttt{ind} de 
+\texttt{L} et le stocke dans la variable \texttt{element}.
+
+\underline{$2^{\grave{e}me}$ méthode}: \textit{"à la main" (mais toujours en
+utilisant }\texttt{randint}\textit{)}
+
+On place les éléments successivement choisis à la fin de $L.$ Pour ne pas
+choisir deux fois un même élément, on échange l'élément choisi avec le
+dernier des éléments de la liste non déjà choisis.
+
+Illustration d'une itération (avec en gris les éléments déjà choisis):
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+1 & 2 & 3 & 4 & 6 & 8 & 9 & 25 & 50 & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.75}}}%
+%BeginExpansion
+\cellcolor[gray]{0.75}%
+%EndExpansion
+5 & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.75}}}%
+%BeginExpansion
+\cellcolor[gray]{0.75}%
+%EndExpansion
+7 & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.75}}}%
+%BeginExpansion
+\cellcolor[gray]{0.75}%
+%EndExpansion
+10 & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.75}}}%
+%BeginExpansion
+\cellcolor[gray]{0.75}%
+%EndExpansion
+75 \\ \hline
+\end{tabular}
+\end{center}
+
+Choix aléatoire d'un élément (blanc sur fond noir)
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+1 & 2 & 3 & 4 & 6 & 8 & 
+%TCIMACRO{%
+%\TeXButton{Noir}{\cellcolor[gray]{0.1}\textcolor{white}{\textbf{9}}} }%
+%BeginExpansion
+\cellcolor[gray]{0.1}\textcolor{white}{\textbf{9}}
+%EndExpansion
+& 25 & 50 & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.75}}}%
+%BeginExpansion
+\cellcolor[gray]{0.75}%
+%EndExpansion
+5 & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.75}}}%
+%BeginExpansion
+\cellcolor[gray]{0.75}%
+%EndExpansion
+7 & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.75}}}%
+%BeginExpansion
+\cellcolor[gray]{0.75}%
+%EndExpansion
+10 & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.75}}}%
+%BeginExpansion
+\cellcolor[gray]{0.75}%
+%EndExpansion
+75 \\ \hline
+\end{tabular}
+\end{center}
+
+échange avec le dernier élément non déjà choisi:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+1 & 2 & 3 & 4 & 6 & 8 & 50 & 25 & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.75}}}%
+%BeginExpansion
+\cellcolor[gray]{0.75}%
+%EndExpansion
+9 & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.75}}}%
+%BeginExpansion
+\cellcolor[gray]{0.75}%
+%EndExpansion
+5 & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.75}}}%
+%BeginExpansion
+\cellcolor[gray]{0.75}%
+%EndExpansion
+7 & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.75}}}%
+%BeginExpansion
+\cellcolor[gray]{0.75}%
+%EndExpansion
+10 & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.75}}}%
+%BeginExpansion
+\cellcolor[gray]{0.75}%
+%EndExpansion
+75 \\ \hline
+\end{tabular}
+\end{center}
+
+(le prochain élément est alors à choisir parmi 1, 2, 3, 4, 6, 8, 50 et 25
+qui forment une sous-liste de $L$)
+
+%TCIMACRO{%
+%\TeXButton{debut remarque}{\begin{bclogo}[logo = \pictoBlocNoteRem, noborder=true]{\ \ Remarques}}}%
+%BeginExpansion
+\begin{bclogo}[logo = \pictoBlocNoteRem, noborder=true]{\ \ Remarques}%
+%EndExpansion
+
+Il est préférable de savoir maîtriser les \textbf{deux }\ méthodes.
+
+%TCIMACRO{\TeXButton{fin}{\end{bclogo}}}%
+%BeginExpansion
+\end{bclogo}%
+%EndExpansion
+
+2) Écrire une fonction Python \texttt{Liste\_couples }prenant en entrée deux
+entiers naturels non nuls $n,m$ et donnant en sortie la liste $L$ des $nm$
+couples $(i,j)$ où $0\leqslant i\leqslant n-1$ et $0\leqslant j\leqslant m-1.
+$
+
+3) Déduire des deux questions précédentes une fonction Python \texttt{%
+Genere\_Laby} prenant en entrée deux entiers naturels non nuls $n,m$, un
+entier naturel $p$ et donnant en sortie:
+
+%TCIMACRO{\TeXButton{debut liste puces}{\begin{myitemize}}}%
+%BeginExpansion
+\begin{myitemize}%
+%EndExpansion
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+un message d'erreur si $p>nm$
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+sinon, une matrice $A$ de taille $(n,m)$ dont tous les coefficients sont é%
+gaux à $2$ sauf $p$ d'entre eux (choisis aléatoirement) qui valent $0.$
+
+%TCIMACRO{\TeXButton{fin liste puces}{\end{myitemize}}}%
+%BeginExpansion
+\end{myitemize}%
+%EndExpansion
+
+Cette fonction \texttt{Genere\_Laby} pourra évidemment faire appel aux deux
+fonctions précédentes \texttt{Tirage} et \texttt{Liste\_couples}.
+
+4) Modifier la fonction précédente (qu'on appellera encore \texttt{%
+Genere\_Laby}) de sorte qu'elle affiche une représentation graphique de $A$ (%
+\textit{cf }exercice 1) et
+
+%TCIMACRO{\TeXButton{debut liste puces}{\begin{myitemize}}}%
+%BeginExpansion
+\begin{myitemize}%
+%EndExpansion
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+qu'elle stocke dans une variable \texttt{image} le résultat de \texttt{%
+plt.imshow(...),}
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+qu'elle donne en sortie, en plus de $A,$ la variable \texttt{image} précé%
+demment définie.
+
+%TCIMACRO{\TeXButton{fin liste puces}{\end{myitemize}}}%
+%BeginExpansion
+\end{myitemize}%
+%EndExpansion
+
+\bigskip
+
+\fbox{\textbf{Exercice 3}}: \textit{Lien entre coordonnées d'un point et
+couple d'indices de la case contenant ce point}
+
+On souhaite que l'utilisateur puisse choisir une case du labyrinthe par un
+clic de souris. Supposons que $A$ soit la matrice représentant le
+labyrinthe. Nous aurons donc besoin de récupérer le couple d'indices $(i,j)$
+du coefficient de $A$ où "se trouve" le point de coordonnées $(x,y)$ choisi
+par l'utilisateur. Il est donc nécessaire d'établir les relations existant
+entre $i,j,x$ et $y.$
+
+Prenons par exemple le cas où $A$ est de taille $(3,5)$ et que l'utilisateur
+choisisse le point de coordonnées $(2.3,1.7)$ indiqué dans le dessin
+ci-dessous
+
+\begin{equation*}
+\includegraphics[width=8cm]{../Images/Laby_images/indice_case.png} 
+\end{equation*}
+
+alors le couple d'indice $(i,j)$ du coefficient de $A$ correspondant à la
+case contenant le point est donné par $(i,j)=(2,2).$
+
+1) Écrire l'expression de $i$ et $j$ en fonction de $x$ et $y$ (les formules
+pourront faire intervenir la fonction \texttt{round} qui arrondit un nombre r%
+éel à l'entier le plus proche). On supposera que le point de coordonnées $%
+(x,y)$ n'est pas situé sur le bord d'une case.
+
+2) En déduire une fonction Python \texttt{Indice\_case} prenant en entrée un
+entier $n\geqslant 1,$ deux réels $x,y$ et donnant en sortie le couple $%
+(i,j) $ où $i,$ $j$ sont donnés par les formules de la question 1 précédente.
+
+\bigskip
+
+\fbox{\textbf{Exercice 4}}: \textit{Liste des voisins d'une case donnée}
+
+Notons encore $A$ la matrice représentant le labyrinthe. Par abus de
+langage, on confondra parfois les coefficients de $A$ avec les cases du
+labyrinthe correspondantes.
+
+On considère que chaque déplacement se fait d'une case vers le bas, vers le
+haut, vers la gauche ou vers la droite.
+
+En un déplacement, on peut donc, à partir d'une case vide d'indices $(i,j),$
+accéder à 4 voisins au maximum (il peut y en avoir moins à cause des bords
+ou des murs). Ci-dessous, nous représentons en exemple le cas où la case $%
+(i,j)$ a $4$ voisins accessibles:%
+\begin{equation*}
+\begin{tabular}{|c|c|c|}
+\hline
+& $i,j-1$ &  \\ \hline
+$i-1,j$ & 
+%TCIMACRO{\TeXButton{GrisC}{\cellcolor[gray]{0.85}}}%
+%BeginExpansion
+\cellcolor[gray]{0.85}%
+%EndExpansion
+$i,j$ & $i+1,j$ \\ \hline
+& $i,j+1$ &  \\ \hline
+\end{tabular}%
+\end{equation*}
+
+Pour accéder à chacun de ces voisins, on utilisera une matrice \texttt{Dep} à
+$4$ lignes et $2$ colonnes indiquant les directions à suivre pour aller de
+la position $(i,j)$ à l'une des 4 positions possibles des cases voisines:
+
+\texttt{Dep = np.array([[0,-1],[-1,0],[1,0],[0,1]])}.
+
+Ainsi, si \texttt{Pos} est la matrice \texttt{Pos=np.array([i,j])}, la
+position du $k^{e}$ voisin sera donnée par exemple par \texttt{Pos+Dep[k]}
+(on rappelle que \texttt{Dep[k]} est la k-ième ligne de \texttt{Dep}). Par
+exemple, pour k=1, \texttt{Pos+Dep[1]} représentera la position \texttt{%
+[i,j]+[-1,0]=[i-1,j]}. On peut aussi itérer directement sur les lignes de 
+\texttt{Dep} si la valeur de k nous est inutile.
+
+\bigskip
+
+Écrire une fonction Python \texttt{voisins\_accessibles} prenant en entrée
+deux indices $i,j$ d'une case de $A$ (correspondant à une case vide) et
+donnant en sortie la liste des couples d'indices des cases voisines accessibles à partir de $(i,j)$ en un déplacement: attention aux cases situées sur les bords ou aux
+cases voisines inaccessibles (les murs)! Cette fonction utilisera le tableau 
+\texttt{Dep} mais elle ne prendra ni \texttt{Dep}, ni $A$ en entrée, car ces
+matrices auront déjà été créées (et déclarée globales) au moment de l'appel
+de cette fonction (question 2-a de l'exercice 5).
+
+Le pseudo-code à traduire sera donc le suivant:
+
+\begin{center}
+\begin{tabular}{l}
+Liste\_voisins\_accessibles = [] \\ 
+Pour chaque voisin possible de $(i,j)$ \\ 
+\ \ \ Si ce voisin ne "sort" pas de $A$ et si ce voisin n'est pas un mur \\ 
+\ \ \ \ \ \ Mettre ce voisin dans Liste\_voisins\_accessibles%
+\end{tabular}
+\end{center}
+
+\bigskip
+
+\fbox{\textbf{Exercice 5}}: \textit{Existence et détermination d'un plus
+court chemin entre deux cases: parcours en largeur.}
+
+Passons à présent à l'algorithme permettant de déterminer (s'il existe) un
+plus court chemin entre deux cases vides du labyrinthe.
+
+Le principe sera le suivant: marquer successivement des cases du labyrinthe
+de leur distance à la case de départ, en partant de la case de départ. Pour
+faire cela on effectuera ce qu'on appelle un parcours en largeur du
+labyrinthe (en anglais: "Breadth First Search"): on marque la première case
+(celle de départ), puis ses voisines accessibles (celles à distance 1), puis
+les voisines accessibles de ces dernières (celles à distance 2), etc.
+
+La structure de donnée importante à utiliser est ce qu'on appelle une file,
+c'est-à-dire une liste dans laquelle on fera plusieurs fois les opérations
+suivantes:
+
+%TCIMACRO{\TeXButton{debut liste puces}{\begin{myitemize}}}%
+%BeginExpansion
+\begin{myitemize}%
+%EndExpansion
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+ajouter un élément en fin de liste,
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+traiter puis supprimer l'élément en début de liste.
+
+%TCIMACRO{\TeXButton{fin liste puces}{\end{myitemize}}}%
+%BeginExpansion
+\end{myitemize}%
+%EndExpansion
+
+Cette file contiendra successivement le numéro de la case correspondant au dé%
+part (à distance 0 de la case de départ), les numéros des cases à distance 1
+du départ, les numéros des cases à distance 2, etc.
+
+On a illustré le fonctionnement du parcours en largeur sur un exemple (voir
+ci-dessous) où la case de départ est l'entrée du labyrinthe (case du coin sup%
+érieur gauche) et la case d'arrivée est la case du coin inférieur droit.
+
+Sur le labyrinthe, on a marqué les cases traitées de leur distance à l'entré%
+e du labyrinthe. Enfin, les cases en gris foncée sont les cases en cours de
+traitement (celles dont on cherche les cases voisines à insérer à l'étape
+suivante dans la file).
+
+\vspace{1cm}
+
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_1.png}
+
+File = []
+\end{minipage}
+\hspace{1cm} 
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_2.png}
+
+Ajout de $(0,0)$
+
+File = $[(0,0)]$
+\end{minipage}
+
+\vspace{1cm}
+
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_3.png}
+
+Ajout des voisins de $(0,0)$
+
+File = $[(0,0),(1,0),(1,1),(0,1)]$
+\end{minipage}
+\hspace{1cm} 
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_4.png}
+
+Suppression de $(0,0)$
+
+File = $[(1,0),(1,1),(0,1)]$
+\end{minipage}
+
+\vspace{1cm}
+
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_5.png}
+
+Ajout du voisin de $(1,0)$
+
+File = $[(1,0),(1,1),(0,1),(2,0)]$
+\end{minipage}
+\hspace{1cm} 
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_6.png}
+
+Suppression de $(1,0)$
+
+File = $[(1,1),(0,1),(2,0)]$
+\end{minipage}
+
+\vspace{1cm}
+
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_7.png}
+
+Suppression de $(1,1)$
+
+File = $[(0,1),(2,0)]$
+\end{minipage}
+\hspace{1cm} 
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_8.png}
+
+Suppression de $(0,1)$
+
+File = $[(2,0)]$
+\end{minipage}
+
+\vspace{1cm}
+
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_9.png}
+	
+Ajout du voisin de $(2,0)$
+	
+File = $[(2,0),(3,0)]$
+\end{minipage}
+\hspace{1cm} 
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_10.png}
+	
+Suppression de $(2,0)$
+	
+File = $[(3,0)]$
+\end{minipage}
+
+\vspace{1cm}
+
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_11.png}
+
+Ajout du voisin de $(3,0)$
+
+File = $[(3,0),(3,1)]$
+\end{minipage}\hspace{1cm} etc.
+
+\vspace{1cm}
+
+\begin{center}
+Si l'on poursuit le marquage complet de toutes les cases accessibles du
+labyrinthe, on aboutit finalement au marquage suivant (avec la case de dé%
+part et d'arrivée en bleu):
+
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_12.png}
+
+File = $[]$ (la file est vide à la fin de l'algorithme dans ce cas)
+\end{minipage}
+
+\bigskip
+\end{center}
+
+Pour parcourir les voisins d'une case donnée, on utilisera la fonction de
+l'exercice 4.
+
+Ci-dessous, un autre exemple avec deux autres cases pour le départ et l'arriv%
+ée (on arrête les marquages dès que l'on a marqué la case d'arrivée):
+
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_B1.png}
+\end{minipage}\hspace{1cm} 
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_B2.png}
+\end{minipage}
+
+\vspace{1cm}
+
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_B3.png}
+\end{minipage}\hspace{1cm} 
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_B4.png}
+\end{minipage}
+
+\vspace{1cm}
+
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_B5.png}
+\end{minipage}\hspace{1cm} 
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_B6.png}
+\end{minipage}
+
+Pour tracer le chemin le plus court reliant les deux cases de départ et
+d'arrivée, il suffira de partir de la case d'arrivée puis de "remonter"
+jusqu'à l'\textit{unique} case marquée 0 (c'est-à-dire la case de départ) en
+suivant les distances décroissantes (5, 4, 3, 2, 1 et 0 dans notre cas).
+Ici, il y a deux chemins possibles (indiqués en bleu)
+
+\begin{center}
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_B7.png}
+\end{minipage}
+
+\bigskip
+
+ou
+
+\bigskip
+
+\begin{minipage}{7cm}
+\centering
+\includegraphics[width=6cm]{../Images/Laby_images/laby_bcpst1_B8.png}
+\end{minipage}
+\end{center}
+
+On peut aussi être dans la situation où la case d'arrivée est inaccessible à
+partir de la case de départ. Dans ce cas, on marque toutes les cases
+accessibles possibles, et l'algorithme se termine lorsque la file est vide
+(voir l'exemple ci-dessous aves les cases de départ et d'arrivée \ toujours
+en bleu).
+
+\begin{minipage}{5cm}
+	\centering
+	\includegraphics[width=4cm]{../Images/Laby_images/laby_bcpst1_C1.png}
+\end{minipage}\hspace{1cm} 
+\begin{minipage}{5cm}
+	\centering
+	\includegraphics[width=4cm]{../Images/Laby_images/laby_bcpst1_C2.png}
+\end{minipage}\hspace{1cm} 
+\begin{minipage}{5cm}
+	\centering
+	\includegraphics[width=4cm]{../Images/Laby_images/laby_bcpst1_C3.png}
+\end{minipage}
+
+Pour effectuer les marquages, nous utiliserons un deuxième tableau $M$ de même
+taille que la matrice $A$ représentant le labyrinthe. Les cases non marquées
+de ce tableau seront codées par la valeur $-1.$
+
+1) \textit{Initialisation du tableau de marquage}
+
+Écrire une fonction Python \texttt{Initialise\_M }prenant en entrée deux
+entiers naturels $n,m$ non nuls (correspondant respectivement au nombre de
+lignes et au nombre de colonnes de $A$) et donnant en sortie une matrice $M$
+de taille $(n,m)$ dont tous les coefficients valent $-1.$
+
+2) \textit{Algorithme de parcours en largeur et plus court chemin}
+
+a) Écrire une fonction Python \texttt{Parcours\_largeur} qui:
+
+%TCIMACRO{\TeXButton{debut liste puces}{\begin{myitemize}}}%
+%BeginExpansion
+\begin{myitemize}%
+%EndExpansion
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+prend en entrée deux couples d'indice $(i,j)$ et $(p,q)$ de cases de $A,$
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+initialise le tableau de marquage $M$ avec de plus $M[i,j]=0$ (marquage de
+la case $(i,j)$ de départ),
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+marque dans $M$ toutes les cases partant de $(i,j)$ de leur distance à la
+case $(i,j)$ jusqu'à marquer la case $(p,q)$ (\textit{cf} deuxième exemple
+ci-dessus), en suivant l'algorithme de parcours en largeur décrit ci-dessus.
+
+\bigskip 
+
+On utilisera une file comme il a été expliqué plus haut. Cette file sera une
+liste initialisée à $\mathtt{[}(i,j)\mathtt{]}$ dans laquelle on va insérer
+toutes les cases en cours (ou en attente) de traitement et retirer celles
+qui ont déjà été traitées (\textit{cf} le premier exemple illustré).
+
+Le pseudo-code à traduire sera alors essentiellement le suivant:
+
+\begin{center}
+\begin{tabular}{l}
+Tant que la case d'indices $(p,q)$ de $M$ n'a pas été marquée et que la file
+n'est pas vide \\ 
+\ \ \ \ \ prendre et supprimer la case $(a,b)$ au début de la file \\ 
+\ \ \ \ \ \texttt{distance = $M[a,b]$ + 1} \\ 
+\ \ \ \ \ mettre en fin de file le ou les voisins accessibles de cette case
+non marqué(s) \dots \\ 
+\ \ \ \ \ \dots et les marquer de la valeur \texttt{distance} dans $M$%
+\end{tabular}
+\end{center}
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+La fonction donnera le tableau de marquage $M$ obtenu en sortie.
+
+%TCIMACRO{\TeXButton{fin liste puces}{\end{myitemize}}}%
+%BeginExpansion
+\end{myitemize}%
+%EndExpansion
+
+\textbf{Important: }Cette fonction créera la matrice \texttt{Dep} définie à
+l'exercice 4, et déclarera cette variable comme une variable globale (car
+elle devra être accessible à la fonction \texttt{voisins\_accessibles}
+qu'elle appellera).
+
+b) Écrire une fonction Python \texttt{chemin} qui affiche la liste des cases d'un chemin le
+plus court de la case $(p,q)$ à la case $(i,j)$. Plus précisément, cette
+fonction devra:
+
+%TCIMACRO{\TeXButton{debut liste puces}{\begin{myitemize}}}%
+%BeginExpansion
+\begin{myitemize}%
+%EndExpansion
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+prendre en entrée:
+
+- deux couples $(i,j)$ et $(p,q)$ de cases d'un labyrinthe représenté par
+une matrice de codage $A,$
+
+- le tableau $M$ décrit dans la question précédente (et donné en sortie par
+la fonction précédente avec $(i,j)$ et $(p,q)$ en entrée).
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+donner en sortie un message d'erreur si la case $(i,j)$ est inaccessible par
+un chemin du labyrinthe partant de la case $(p,q),$
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+sinon, donner la liste $L$ des couples d'indices des cases d'un chemin le
+plus court de $(p,q)$ à $(i,j)$ (avec $(p,q)$ et $(i,j)$ inclus dans cette
+liste).
+
+%TCIMACRO{\TeXButton{fin liste puces}{\end{myitemize}}}%
+%BeginExpansion
+\end{myitemize}%
+%EndExpansion
+
+\bigskip
+
+La liste $L$ des couples sera construite à partir du tableau $M$ de
+marquages en partant de la case $(p,q)$ et en suivant successivement des
+cases voisines à distances strictement décroissantes de la case $(i,j),$
+jusqu'à la case $(i,j)$ (l'unique case marquée $0$).
+
+Par exemple, si $M$ est donnée par $%
+\begin{pmatrix}
+-1 & -1 & -1 & 3 & 4 & 5 \\ 
+5 & -1 & -1 & 2 & 3 & -1 \\ 
+4 & -1 & 0 & 1 & -1 & -1 \\ 
+3 & 2 & 1 & -1 & -1 & -1%
+\end{pmatrix}%
+$ avec $(i,j)=(2,2)$ et $(p,q)=(0,5),$ un plus court chemin serait (indiqué
+en gris):
+
+\begin{center}
+$\left( 
+\begin{tabular}{cccccc}
+$-1$ & $-1$ & $-1$ & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.85}}}%
+%BeginExpansion
+\cellcolor[gray]{0.85}%
+%EndExpansion
+$3$ & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.85}}}%
+%BeginExpansion
+\cellcolor[gray]{0.85}%
+%EndExpansion
+$4$ & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.85}}}%
+%BeginExpansion
+\cellcolor[gray]{0.85}%
+%EndExpansion
+$5$ \\ 
+$5$ & $-1$ & $-1$ & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.85}}}%
+%BeginExpansion
+\cellcolor[gray]{0.85}%
+%EndExpansion
+$2$ & $3$ & $-1$ \\ 
+$4$ & $-1$ & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.85}}}%
+%BeginExpansion
+\cellcolor[gray]{0.85}%
+%EndExpansion
+$0$ & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.85}}}%
+%BeginExpansion
+\cellcolor[gray]{0.85}%
+%EndExpansion
+$1$ & $-1$ & $-1$ \\ 
+$3$ & $2$ & $1$ & $-1$ & $-1$ & $-1$%
+\end{tabular}%
+\right) $
+\end{center}
+
+ou:
+
+\begin{center}
+$\left( 
+\begin{tabular}{cccccc}
+$-1$ & $-1$ & $-1$ & $3$ & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.85}}}%
+%BeginExpansion
+\cellcolor[gray]{0.85}%
+%EndExpansion
+$4$ & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.85}}}%
+%BeginExpansion
+\cellcolor[gray]{0.85}%
+%EndExpansion
+$5$ \\ 
+$5$ & $-1$ & $-1$ & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.85}}}%
+%BeginExpansion
+\cellcolor[gray]{0.85}%
+%EndExpansion
+$2$ & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.85}}}%
+%BeginExpansion
+\cellcolor[gray]{0.85}%
+%EndExpansion
+$3$ & $-1$ \\ 
+$4$ & $-1$ & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.85}}}%
+%BeginExpansion
+\cellcolor[gray]{0.85}%
+%EndExpansion
+$0$ & 
+%TCIMACRO{\TeXButton{Gris}{\cellcolor[gray]{0.85}}}%
+%BeginExpansion
+\cellcolor[gray]{0.85}%
+%EndExpansion
+$1$ & $-1$ & $-1$ \\ 
+$3$ & $2$ & $1$ & $-1$ & $-1$ & $-1$%
+\end{tabular}%
+\right) $
+\end{center}
+
+et on aurait, dans le premier cas, $L=[(0,5),(0,4),(0,3),(1,3),(2,3),(2,2)]$
+(et dans le deuxième: $L=[(0,5),(0,4),(1,4),(1,3),(2,3),(2,2)]$).
+
+\bigskip
+
+\fbox{\textbf{Exercice 6}}:
+
+1) a) Écrire une fonction Python dont le rôle va être de coder les cases
+d'un chemin indiqué en entrée.
+
+Cette fonction prendra en entrée une liste $L$ de couples d'indices de cases
+(libres) d'un chemin dans le labyrinthe (telle que donnée en sortie par la
+fonction de la question 2-b de l'exercice 5). Elle déclarera globale la
+variable $A$ (où $A$ est la matrice qui code le labyrinthe).
+
+Elle modifiera les coefficients de $A$ dont les indices sont indiqués dans $%
+L $ (pour les conventions de codage, revoir l'exercice 1)
+b) Écrire une fonction effectuant la procédure inverse: à partir de $L,$
+modifier les coefficients de $A$ indiqués par $L$ de sorte qu'ils
+correspondent à nouveau à des cases blanches (c'est-à-dire sans mur et non
+parcourue par un chemin).
+
+2) a) Écrire la fonction ci-dessous dans votre éditeur, à la suite des précé%
+dentes fonctions écrites jusqu'ici:
+
+\begin{myPython}
+def Trace(image):
+    global compteur, coord, A
+    compteur = 0
+    coord = []
+    n = A.shape[0]
+    def clic(event):
+        global compteur, coord, A
+        x, y = event.xdata, event.ydata
+        i, j = Indice_Case(float(x), float(y))
+        if A[i,j] == 0:
+            print("Cette case est un mur")
+            return
+        compteur += 1
+        if compteur%3 > 0:
+            coord.append((i,j))
+            if compteur%3 == 2:
+                for couple in coord:
+                    A[couple] = 1
+                image.set_data(A)
+                plt.draw()
+        else:
+            for couple in coord:
+                A[couple] = 2
+            image.set_data(A)
+            plt.draw()
+            coord = []
+    plt.connect('button_press_event', clic)
+\end{myPython}
+
+puis faire appel à la fonction \texttt{Genere\_Laby} (question 4 de
+l'exercice 2) et à la fonction \texttt{Trace} précédente en tapant dans la
+console
+
+\begin{myPython}
+A, img = Genere_Laby(10,15,50)
+Trace(img)
+\end{myPython}
+
+Cliquer alors plusieurs fois sur des cases blanches du labyrinthe et
+constater ce qui se passe.
+
+\textit{Quelques explications sur la fonction }\texttt{Trace}:
+
+%TCIMACRO{\TeXButton{debut liste puces}{\begin{myitemize}}}%
+%BeginExpansion
+\begin{myitemize}%
+%EndExpansion
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+La dernière ligne \texttt{plt.connect('button\_press\_event', clic)}
+signifie qu'on va associer un évènement à chaque appui d'un bouton de la
+souris et que cet évènement est défini par la fonction \texttt{clic} définie
+un peu plus haut dans le code. Autrement dit, chaque fois qu'on cliquera sur
+la souris à un endroit du graphique, la fonction \texttt{clic} sera exécutée.
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+Les variables \texttt{event.xdata} et \texttt{event.ydata} font référence
+aux coordonnées $x$ et $y$ du point du graphique sur lequel on a cliqué avec
+la souris.
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+\texttt{image.set\_data(A) }signifie qu'on met à jour l'instruction \texttt{%
+plt.imshow(...) }que contient \texttt{image} avec \texttt{A} comme nouvel
+argument.
+
+%TCIMACRO{\TeXButton{item}{\item}}%
+%BeginExpansion
+\item%
+%EndExpansion
+
+L'instruction \texttt{plt.draw() }a ici pour effet de mettre à jour le
+graphique.
+
+%TCIMACRO{\TeXButton{fin liste puces}{\end{myitemize}}}%
+%BeginExpansion
+\end{myitemize}%
+%EndExpansion
+
+Essayer de comprendre tout le code de la fonction \texttt{Trace}. En
+particulier, quel est le rôle de la variable \texttt{compteur}?
+
+b) Une fois la fonction \texttt{Trace} bien comprise, essayer de la modifier
+pour écrire une fonction \texttt{Trace\_Chemin} prenant toujours en entrée 
+\texttt{image}. Si cette fonction est appelée à la suite de \texttt{%
+LabyAleatoire}, l'utilisateur doit pouvoir voir s'afficher un plus court
+chemin d'une case du labyrinthe à une autre, cases qu'il aura choisies avec
+la souris (si un tel chemin n'existe pas, il doit voir s'afficher un message
+d'erreur). Il lui sera aussi indiqué à chaque fois la longueur d'un tel
+chemin et il pourra répéter l'expérience autant de fois qu'il le veut.
+
+Cette fonction \texttt{Trace\_Chemin} fera appel aux fonctions des questions
+2-a et 2-b de l'exercice 5, ainsi qu'aux fonctions des questions 1) a) et 1)
+b) de cet exercice 6. Elle pourra avoir pour squelette:
+
+\begin{myPython}
+def Trace_Chemin(image):
+    global compteur, ... ...
+    .
+    .
+    .
+    def clic(event):
+        global compteur, ... ...
+        .
+        .
+        .
+        if compteur%3 > 0:
+            .
+            .
+            if compteur%3 == 2:
+                .
+                .
+                .
+        else:
+           .
+           .
+           .
+    plt.connect('button_press_event', clic)
+\end{myPython}
+
+Une fois la fonction \texttt{Trace\_Chemin} écrite et fonctionnant
+correctement, vous pourrez supprimer la fonction \texttt{Trace} de votre
+programme.
+
+\bigskip
+
+\fbox{\textbf{Exercice 7}}: \textit{Synthèse}
+
+Écrire à présent la fonction Python principale du projet (celle articulant
+toutes les précédentes):
+
+cette fonction ne prendra pas d'argument en entrée, demandera à
+l'utilisateur la taille $(n,m)$ du labyrinthe ainsi que le nombre de murs $p$%
+. Elle affichera le labyrinthe puis permettra à l'utilisateur de cliquer
+plusieurs fois sur deux cases pour avoir le plus court chemin entre ces deux
+cases, ainsi que sa longueur.
+
+Cette fonction fera donc appel à la fonction \texttt{Genere\_Laby} de
+l'exercice 2 (question 4) et à la fonction \texttt{Trace\_Chemin} de
+l'exercice 6.
+
+Proposer également à l'utilisateur de définir plutôt le pourcentage de murs
+sur le nombre total de cases (au lieu du nombre de murs) et adapter la
+valeur de $p$ en fonction de la réponse fournie par l'utilisateur.
+
+\bigskip
+
+Voici ci-dessous à quoi pourra ressembler l'exécution du projet:
+
+\begin{center}
+\begin{minipage}{18cm}
+	\animategraphics[loop,controls,width=\linewidth]{15}{../Images/Laby_images/laby_bcpst1-}{0}{361}
+\end{minipage}
+\end{center}
+
+\fbox{\textbf{Extension possible}}:
+
+Supposons que l'entrée du labyrinthe soit la case tout en haut à gauche du
+labyrinthe et la sortie la case tout en bas à droite du labyrinthe.
+
+Avec $n,m$ fixés (largeur et longueur du labyrinthe), déterminer pour
+diverses valeurs de $p$ la moyenne des longueurs d'un plus court chemin de
+l'entrée à la sortie sur plusieurs labyrinthes aléatoires associés aux paramè%
+tres $m,n$ et $p$ (on ignorera les labyrinthes où un tel chemin n'existe pas
+ou ceux où l'entrée ou la sortie sont obstruées par un mur).
+
+Représenter graphiquement ces moyennes sur un graphique en fonction de $p$
+(le paramètre variant)$.$
+Une nouvelle fonction Python pourra être éventuellement réalisée pour automatiser tout cela.
+Commenter les résultats obtenus.
+\end{document}
